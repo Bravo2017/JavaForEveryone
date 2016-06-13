@@ -12,6 +12,10 @@ public class Reverse {
 		double[] numbers = readInputs(5);
 		multiply(numbers, 10);
 		printReversed(numbers);
+
+		double number = readInput();
+		multiply(number, 10);
+		printNumber(number);
 	}
 
 	/**
@@ -31,6 +35,14 @@ public class Reverse {
 		return inputs;
 	}
 
+	public static double readInput() {
+		System.out.println("Enter 1 number: ");
+		Scanner in = new Scanner(System.in);
+		double input = 0;
+		input = in.nextDouble();
+		return input;
+	}
+
 	/**
 	 * Multiplies all elements of an array by a factor.
 	 * 
@@ -43,6 +55,11 @@ public class Reverse {
 		for (int i = 0; i < values.length; i++) {
 			values[i] = values[i] * factor;
 		}
+	}
+
+	private static void multiply(double value, double factor) {
+		value = value * factor;
+		System.out.println(value);
 	}
 
 	/**
@@ -60,4 +77,7 @@ public class Reverse {
 		System.out.println();
 	}
 
+	private static void printNumber(double value) {
+		System.out.print(value + " ");
+	}
 }
