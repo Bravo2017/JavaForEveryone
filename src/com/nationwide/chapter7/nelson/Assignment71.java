@@ -18,8 +18,8 @@ public class Assignment71 {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		String inputFileName = ("C:/Users/nelsot17/Documents/hello.txt");
-		String outputFileName = ("C:/Users/nelsot17/Documents/hello.txt");
+		String inputFileName = ("C:/Users/thenricksen/hello.txt");
+		String outputFileName = ("C:/Users/thenricksen/hello.txt");
 
 		// Open the input file with the file name hello.txt
 		File inputFile = new File(inputFileName);

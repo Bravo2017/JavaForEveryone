@@ -19,7 +19,7 @@ public class Assignment7_1 {
 
 		PrintWriter out = null;
 		try {
-			out = new PrintWriter("C:/JavaForEveryone/files/" + outputFileName);
+			out = new PrintWriter("C:/Users/thenricksen/" + outputFileName);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -28,7 +28,7 @@ public class Assignment7_1 {
 		out.close();
 		console.close();
 
-		File inputFile = new File("C:/JavaForEveryone/files/" + inputFileName);
+		File inputFile = new File("C:/Users/thenricksen/" + inputFileName);
 		try {
 			Scanner in = new Scanner(inputFile);
 			while (in.hasNext()) {

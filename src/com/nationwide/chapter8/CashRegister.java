@@ -6,7 +6,7 @@ package com.nationwide.chapter8;
  */
 public class CashRegister {
 
-	private int itemCount;
+	public int itemCount;
 	private double totalPrice;
 
 	/**
