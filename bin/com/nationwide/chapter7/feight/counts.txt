@@ -1,0 +1,3 @@
+This is my text file.
+It holds data that my program will read.
+The program will then print out the number of characters, words, and lines in this file.
