@@ -3,7 +3,6 @@ package com.nationwide.chapter9.nelson;
 public class BetterRectangleTest {
 
 	public BetterRectangleTest() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -18,5 +17,6 @@ public class BetterRectangleTest {
 
 		System.out.printf("Rectangle Perimeter is %.2f\n", perimeter);
 		System.out.printf("Rectangle Area is      %.2f\n", area);
+
 	}
 }
