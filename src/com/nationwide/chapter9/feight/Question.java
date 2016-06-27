@@ -1,12 +1,11 @@
 package com.nationwide.chapter9.feight;
 
-
 /**
  * Modify the checkAnswer method of the Question class so that it does not take
  * into account different spaces or upper/lowercase characters. For example, the
  * response "JAMES gosling" should match an answer of "James Gosling".
  * 
- * @author Suzanne Feight
+ * @author Suzanne Feight .
  * 
  */
 

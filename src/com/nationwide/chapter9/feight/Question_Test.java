@@ -2,8 +2,7 @@ package com.nationwide.chapter9.feight;
 
 /**
  * 
- * @author Suzanne Feight
- * 
+ * @author Suzanne Feight .
  */
 
 public class Question_Test {
