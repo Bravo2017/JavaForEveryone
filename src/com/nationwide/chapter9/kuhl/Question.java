@@ -1,8 +1,5 @@
-package com.nationwide.chapter9.tekippe;
+package com.nationwide.chapter9.kuhl;
 
-/**
- * A question with a text and an answer.
- */
 public class Question {
 	private String text;
 	private String answer;
@@ -32,9 +29,8 @@ public class Question {
 	 *            the answer
 	 */
 	public void setAnswer(String correctResponse) {
-		answer = answer + correctResponse.replaceAll("\\s+", "");
-		;
-		System.out.println("value in answer is:  " + answer);
+		answer = correctResponse;
+
 	}
 
 	/**
@@ -44,9 +40,14 @@ public class Question {
 	 *            the response to check
 	 * @return true if the response was correct, false otherwise
 	 */
+	/**
+	 * 9.3Modify the checkAnswer method of the Question class so that it does
+	 * not take into account different spaces or upper/lowercase characters. For
+	 * example, the response "JAMES gosling" should match an answer of
+	 * "James Gosling" .
+	 */
 	public boolean checkAnswer(String response) {
-		String response1 = response.replaceAll("\\s+", "");
-		return response1.equalsIgnoreCase(answer);
+		return response.toLowerCase().equals(answer.toLowerCase());
 	}
 
 	/**
@@ -54,5 +55,10 @@ public class Question {
 	 */
 	public void display() {
 		System.out.println(text);
+	}
+
+	public void setChoice(String choice) {
+		// TODO Auto-generated method stub
+
 	}
 }
