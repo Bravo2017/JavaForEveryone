@@ -2,55 +2,46 @@ package com.nationwide;
 
 import java.util.ArrayList;
 
-/**
- * @author DAVISK51
- * 
- */
-public class MultiChoiceQuestion extends ChoiceQuestion {
-	// P9.5 Add a class MultiChoiceQuestion to the question hierarchy
-	// of Section 9.1 that allows multiple correct choices.
-	// The respondent should provide all correct choices, separated by spaces.
-	// Provide instructions in the question text.
-	//
-	// This instance variable is added to the subclass
+public class ChoiceQuestion extends Question {
 
-	String multiChoiceAnswer = "";
+	// This instance variable is added to the subclass
 	private ArrayList<String> choices;
 
 	/**
 	 * Constructs a choice question
 	 */
-	public MultiChoiceQuestion() {
+	public ChoiceQuestion() {
 		choices = new ArrayList<String>();
 	}
 
 	/**
-	 * Adds an answer choice to this question. Override ChoiceQuestion
-	 * addChoice.
+	 * Adds an answer choice to this question.
 	 * 
 	 * @param choice
 	 *            the choice to add
 	 * @param correct
 	 *            true if this is the correct choice, false otherwise
 	 */
+
 	// This method is added to the subclass
 	public void addChoice(String choice, boolean correct) {
 		choices.add(choice);
 		if (correct) {
-			multiChoiceAnswer = multiChoiceAnswer + choices.size();
-			String choiceString = multiChoiceAnswer;
+			// Convert choices.size() to string
+			String choiceString = "" + choices.size();
 			this.setAnswer(choiceString);
 		}
+
 	}
 
 	// This method overrides a method from the superclass
 	public void display() {
 		super.display(); // Display the question text
 							// Display the answer choices
-		// (why cant I get this from "ChoiceQuestion?)
 		for (int i = 0; i < choices.size(); i++) {
 			int choiceNumber = i + 1;
 			System.out.println(choiceNumber + ": " + choices.get(i));
 		}
 	}
+
 }
