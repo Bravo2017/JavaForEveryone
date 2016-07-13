@@ -1,0 +1,55 @@
+
+import java.util.Scanner;
+
+public class AppointmentCalendarDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		AppointmentCalendar appt = new AppointmentCalendar();
+		Scanner in = new Scanner(System.in);
+		System.out
+				.println("What would you like to schedule your appointment for? ");
+		String desc = in.nextLine();
+		// How could I "wrapper" this?
+		System.out.print("Enter date as  ");
+		System.out.println("Enter 2 digit month:  ");
+		int mo = in.nextInt();
+		System.out.println("Enter 2 digit date:  ");
+		int da = in.nextInt();
+		System.out.println("Enter 4 digit year:  ");
+		int yr = in.nextInt();
+
+		System.out.println("What hour does this appointment start? ");
+		int st = in.nextInt();
+		System.out.println("What hour does this appointment end? ");
+		int et = in.nextInt();
+
+		appt.setDescription(desc);
+		appt.setStartTime(st);
+		appt.setDate(yr, mo, da);
+		appt.setEndTime(et);
+
+		System.out.print("Your " + appt.getDescription()
+				+ " Appointment is from ");
+		System.out.println(appt.getDate() + " to " + appt.getEndTime() + ":00");
+
+		// why doesn't the first one work?
+		// If i switch them still only the second one works.
+		System.out.println("desc1 Do you want to store this appointment?");
+		String desc1 = in.nextLine();
+		System.out.println("desc1 " + desc1);
+
+		System.out.println("desc2 Do you want to store this appointment?");
+		String desc2 = in.nextLine();
+		System.out.println("desc2 " + desc2);
+
+		// date wrapper?
+		// SimpleDateFormat dateFormat = new
+		// SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+		// System.out.println("enter date as mm/dd/yy: ");
+		// String DATE_FORMAT = in.toString();
+		// SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+		// System.out.println("Simple date " + dateFormat.format(sdf));
+	}
