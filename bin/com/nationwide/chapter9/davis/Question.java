@@ -1,9 +1,7 @@
-package com.nationwide.chapter9.tekippe;
+package com.nationwide;
 
-/**
- * A question with a text and an answer.
- */
 public class Question {
+
 	private String text;
 	private String answer;
 
@@ -32,9 +30,7 @@ public class Question {
 	 *            the answer
 	 */
 	public void setAnswer(String correctResponse) {
-		answer = answer + correctResponse.replaceAll("\\s+", "");
-		;
-		System.out.println("value in answer is:  " + answer);
+		answer = correctResponse;
 	}
 
 	/**
@@ -45,8 +41,19 @@ public class Question {
 	 * @return true if the response was correct, false otherwise
 	 */
 	public boolean checkAnswer(String response) {
-		String response1 = response.replaceAll("\\s+", "");
-		return response1.equalsIgnoreCase(answer);
+		/**
+		 * P9.3 Modify the checkAnswer method of the Question class so that it
+		 * does not take into account different spaces or upper/lowercase
+		 * characters.
+		 */
+		String upAnswer = answer.toUpperCase();
+		answer = upAnswer.replaceAll("\\s+", "");
+
+		String upResponse = response.toUpperCase();
+		response = upResponse.replaceAll("\\s+", "");
+
+		return response.equals(answer);
+
 	}
 
 	/**

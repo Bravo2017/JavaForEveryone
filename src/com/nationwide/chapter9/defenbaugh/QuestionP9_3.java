@@ -1,16 +1,18 @@
-package com.nationwide.chapter9.tekippe;
+package com.nationwide.chapter9.defenbaugh;
 
-/**
- * A question with a text and an answer.
- */
-public class Question {
+public class QuestionP9_3 {
 	private String text;
 	private String answer;
 
 	/**
 	 * Constructs a question with empty question and answer.
+	 * 
+	 * @author Valerie Defenbaugh P9_03 Modify the checkAnswer method of the
+	 *         Question class so that it does not take into account different
+	 *         spaces or upper/lowercase characters. For example, the response
+	 *         "JAMES gosling" should match an answer of "James Gosling".
 	 */
-	public Question() {
+	public QuestionP9_3() {
 		text = "";
 		answer = "";
 	}
@@ -32,9 +34,7 @@ public class Question {
 	 *            the answer
 	 */
 	public void setAnswer(String correctResponse) {
-		answer = answer + correctResponse.replaceAll("\\s+", "");
-		;
-		System.out.println("value in answer is:  " + answer);
+		answer = correctResponse;
 	}
 
 	/**
@@ -45,8 +45,15 @@ public class Question {
 	 * @return true if the response was correct, false otherwise
 	 */
 	public boolean checkAnswer(String response) {
-		String response1 = response.replaceAll("\\s+", "");
-		return response1.equalsIgnoreCase(answer);
+
+		// Remove spaces in both strings and use String method equalsIgnoreCase
+		// to compare the strings
+
+		if (response.replace(" ", "").equalsIgnoreCase(answer.replace(" ", ""))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -55,4 +62,5 @@ public class Question {
 	public void display() {
 		System.out.println(text);
 	}
+
 }

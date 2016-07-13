@@ -1,0 +1,64 @@
+
+
+import java.util.Calendar;
+
+public class AppointmentCalendar {
+	public String date;
+	public int startTime;
+	public int endTime;
+	public String description;
+
+	// Constructor?
+	// public AppointmentCalendar() {}
+
+	public void setDate(int yy, int mm, int dd) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(yy, mm - 1, dd, startTime, 00);
+		date = (String.format("%tc", cal));
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setStartTime(int st) {
+		startTime = st;
+	}
+
+	public int getStartTime() {
+		return startTime;
+	}
+
+	public void setEndTime(int et) {
+		endTime = et;
+	}
+
+	public int getEndTime() {
+		return endTime;
+	}
+
+	public void setDescription(String desc) {
+		description = desc;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void showAppointments() {
+
+	}
+
+	public void addAppointments() {
+
+	}
+
+	public void deleteAppointments() {
+
+	}
+
+	public void setAppointment(String dt, int st, int et, String dec) {
+
+	}
+
+}
