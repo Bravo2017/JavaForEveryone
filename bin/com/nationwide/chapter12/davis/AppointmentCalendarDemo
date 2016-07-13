@@ -53,3 +53,5 @@ public class AppointmentCalendarDemo {
 		// SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 		// System.out.println("Simple date " + dateFormat.format(sdf));
 	}
+
+}
