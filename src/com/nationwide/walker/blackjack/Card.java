@@ -6,6 +6,7 @@ public class Card {
 	String name;
 	int numValue;
 	boolean isAce = false;
+
 	
 	public Card(){
 		

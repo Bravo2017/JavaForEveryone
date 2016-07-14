@@ -13,6 +13,7 @@ import java.util.Collections;
 public class Deck {
 	
 	ArrayList<Card> cards = new ArrayList<Card>();
+	ArrayList<Card> cardsOriginalState = new ArrayList<Card>();
 	String[] value = {"Ace", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 	
 	public Deck(){
@@ -25,18 +26,9 @@ public class Deck {
 		}
 		
 		Collections.shuffle(cards);
-		ArrayList<Card> cardsOriginalState = new ArrayList<Card>();
 		cardsOriginalState.equals(cards);
 	}
 		
-	
-	void printDeck(){
-
-		for (Card printCard : cards){
-			System.out.println(printCard.getValue() + " " + printCard.getSuit());
-		}
-		
-	}
 	
 	ArrayList<Card> getCardList (){
 		return cards;
@@ -52,7 +44,14 @@ public class Deck {
 	}
 	
 	void shuffleDeck(){
-		
+		cards.equals(cardsOriginalState);
+		Collections.shuffle(cards);
+	}
+	
+	void printDeck(){
+		for (Card printCard : cards){
+			System.out.println(printCard.getValue() + " " + printCard.getSuit());
+		}
 	}
 	
 

@@ -6,6 +6,7 @@ public class Player {
 	ArrayList<Card> playerHand = new ArrayList<Card>();
 	Deck deck = new Deck();
 	int value;
+	static int winnerIndex;
 	
 	public Player(Deck deck){
 		this.deck = deck;
@@ -25,16 +26,26 @@ public class Player {
 		for (Card card : playerHand){
 			value = value + card.getNumValue();
 		}
-	/*	while (value > 21){
-			for (Card card : playerHand){
-				if ((card.isAce) && (value > 21)){
-					card.setNumValue(2);
-					value = value - 9;
-				}
+		if ((value > 21) && this.checkForAce()){
+					value = value - 10;
+		} 
+		if (value > 21){
+			value = -1;
+		}
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	public boolean checkForAce(){
+		boolean hasAce = false;
+		for (Card card : playerHand){
+			if (card.getValue() == "String"){
+				hasAce = true;
 			}
-	*/
-		//System.out.println(value);
-		//return value;
+		}
+		return hasAce;
 	}
 	
 	public void playerHit(){
@@ -43,11 +54,13 @@ public class Player {
 	
 	public static int highestHand(ArrayList<Player> players){
 	    int highest = 0;
-		for (Player currentPlayer : players){
-			if ((currentPlayer.getValue() > highest) && (currentPlayer.getValue() < 21)){
-				highest = currentPlayer.getValue();
+		for (Player p : players){
+			if ((p.getValue() > highest) && (p.getValue() < 21)){
+				highest = p.getValue();
+				winnerIndex = players.indexOf(p);
 			}
 		}
+		
 		return highest;
 	}
 	
@@ -60,10 +73,6 @@ public class Player {
 		System.out.println("");
 		System.out.println("Hand Value: " + this.getValue());
 		System.out.println("");
-	}
-	
-	public int getValue(){
-		return value;
 	}
 	
 }
