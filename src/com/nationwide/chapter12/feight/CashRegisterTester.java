@@ -1,22 +1,23 @@
 package com.nationwide.chapter12.feight;
 
+import com.nationwide.chapter12.feight.com.horstmann.CashRegister;
+import com.nationwide.chapter12.feight.com.horstmann.Coin;
+
 /**
  * This program tests the CashRegister class.
  */
 public class CashRegisterTester {
 	public static void main(String[] args) {
-		Money money = new Money();
 		CashRegister register1 = new CashRegister();
 		register1.addItem(1.95);
 		register1.addItem(0.95);
 		register1.addItem(2.50);
 
-		register1.enterPayment(1, money.getOneDollarBill());
-		register1.enterPayment(1, money.getFiveDollarBill());
-		register1.enterPayment(2, money.getQuarter());
-		register1.enterPayment(1, money.getNickel());
-		register1.enterPayment(1, money.getDime());
-		register1.enterPayment(10, money.getPenny());
+		Coin dollar = new Coin(1.0, "Dollar");
+		Coin quarter = new Coin(0.25, "Quarter");
+
+		register1.enterPayment(6, dollar);
+		register1.enterPayment(3, quarter);
 
 		System.out.printf("Change: %.2f\n", register1.giveChange());
 	}
