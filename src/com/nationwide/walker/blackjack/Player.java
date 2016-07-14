@@ -18,6 +18,10 @@ public class Player {
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
+	
+	public int getPlayerNumber(){
+		return playerNumber;
+	}
 
 	public void dealHand(){
 		
@@ -54,7 +58,8 @@ public class Player {
 	}
 	
 	public void playerHit(){
-		
+		playerHand.add(deck.getTopCard());
+		handValue();
 	}
 	
 	public static int highestHand(ArrayList<Player> players){
@@ -71,7 +76,7 @@ public class Player {
 	
 	public void printHand(){
 		for (Card card : playerHand){
-			System.out.print(card.getValue() + " " + card.getSuit());
+			System.out.print(card.getValue() + " of " + card.getSuit());
 			System.out.print("(" + card.getNumValue() + ")");
 			System.out.print("     ");
 		}
