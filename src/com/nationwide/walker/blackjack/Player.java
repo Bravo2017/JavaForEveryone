@@ -6,12 +6,17 @@ public class Player {
 	ArrayList<Card> playerHand = new ArrayList<Card>();
 	Deck deck = new Deck();
 	int value;
+	int playerNumber;
 	static int winnerIndex;
 	
 	public Player(Deck deck){
 		this.deck = deck;
 		dealHand();
 		handValue();
+	}
+
+	public void setPlayerNumber(int playerNumber) {
+		this.playerNumber = playerNumber;
 	}
 
 	public void dealHand(){
@@ -79,4 +84,5 @@ public class Player {
 		return winnerIndex;
 	}
 	
+
 }

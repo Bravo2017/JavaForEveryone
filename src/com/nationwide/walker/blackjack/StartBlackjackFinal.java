@@ -28,6 +28,10 @@ public class StartBlackjackFinal {
 		}
 		
 		for (Player p : players){
+			p.setPlayerNumber(players.indexOf(p));
+		}
+		
+		for (Player p : players){
 			if (players.indexOf(p) == 0){
 				System.out.print("Dealer:      ");
 			}
@@ -36,8 +40,6 @@ public class StartBlackjackFinal {
 			}
 			p.printHand();
 		}
-		
-		
 		
 	}
 
