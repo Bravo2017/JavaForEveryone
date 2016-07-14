@@ -26,7 +26,17 @@ public class StartBlackjackFinal {
 		for (int i = 1; i <= playerCount; i++){
 			players.add(new Player(deck));
 		}
-
+		
+		for (Player p : players){
+			if (players.indexOf(p) == 0){
+				System.out.print("Dealer:      ");
+			}
+			else {
+				System.out.print("Player  " + players.indexOf(p) + ":   ");
+			}
+			p.printHand();
+		}
+		
 		
 		
 	}

@@ -23,7 +23,8 @@ public class StartBlackjack {
 			p.printHand();
 		}
 		
-		highestHand = Player.highestHand(players);
+		Player.highestHand(players);
+		highestHand = Player.getWinner();
 		if (highestHand == 0){
 			System.out.println("Dealer wins.");
 		}

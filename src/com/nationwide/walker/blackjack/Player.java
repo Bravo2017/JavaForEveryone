@@ -75,4 +75,8 @@ public class Player {
 		System.out.println("");
 	}
 	
+	public static int getWinner(){
+		return winnerIndex;
+	}
+	
 }
