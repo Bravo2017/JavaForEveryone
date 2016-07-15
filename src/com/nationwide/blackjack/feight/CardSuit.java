@@ -4,14 +4,14 @@ public enum CardSuit {
 
 	HEARTS("H"), DIAMONDS("D"), SPADES("S"), CLUBS("C");
 	
-	private String value;
+	private String suit;
 	
-	private CardSuit(String newValue) {
-		this.value = newValue;
+	private CardSuit(String newSuit) {
+		this.suit = newSuit;
 	}
 	
 	public String getValue() {
-		return value;
+		return suit;
 	}
 
 }
