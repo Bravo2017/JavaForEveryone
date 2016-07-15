@@ -7,16 +7,17 @@ public class Dealer extends Player{
 	ArrayList<Card> dealerHand = new ArrayList<Card>();
 	
 	public Dealer(){
-		dealerHand.equals(playerHand);
+		super();
 	}
 	
 	public void addCard(Card topCard){
 		dealerHand.add(topCard);
+		//playerHand.equals(dealerHand);
+		handValue();
 	}
 	
 	public void printHand(){
-		
-		playerHand.equals(dealerHand);
+
 		System.out.print("Dealer:      ");
 		
 		for (Card card : dealerHand){
@@ -29,6 +30,20 @@ public class Dealer extends Player{
 		System.out.println("");
 		
 	}
-
 	
+	public void handValue(){
+		
+		value = 0;
+		System.out.println(playerHand.size());
+		for (Card card : dealerHand){
+			value = value + card.getNumValue();
+		}
+		if ((value > 21) && this.checkForAce()){
+			value = value - 10;
+		} 
+		if (value > 21){
+			value = -1;
+		}
+	}
+
 }

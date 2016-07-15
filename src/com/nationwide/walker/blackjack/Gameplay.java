@@ -25,17 +25,13 @@ public class Gameplay {
 		return highest;
 	}
 	
+	
 	static void printAllHands(){
+
+		dealer.printHand();
 		
 		for (Player p : players){
-			
-			if (p.getPlayerNumber() == 0){
-				System.out.print("Dealer:      ");
-			}
-			
-			else {
-				System.out.print("Player  " + p.getPlayerNumber() + ":   ");
-			}
+			System.out.print("Player  " + p.getPlayerNumber() + ":   ");
 			
 			p.printHand();
 			
@@ -43,9 +39,9 @@ public class Gameplay {
 				System.out.println("Player " + p.getPlayerNumber() + " has gone bust.");
 				players.remove(p);
 			}
-			
 		}
 	}
+	
 	
 	static ArrayList<Player> addPlayers(int playerCount){
 		
@@ -62,10 +58,14 @@ public class Gameplay {
 		return players;
 	}
 	
+	
 	static Dealer addDealer(){
+		
 		dealer = new Dealer();
 		return dealer;
+		
 	}
+	
 	
 	static void startPlayerTurns(){
 		
@@ -73,21 +73,13 @@ public class Gameplay {
 		
 		for (Player p : players){
 			
-			if (p.getPlayerNumber() == 0){
-				;	//Do nothing if player is the Dealer
-			}
-			
-			else{
-				//Scanner input = new Scanner(System.in);
-				
-				System.out.print("Player " + p.getPlayerNumber() + "'s turn (1. Hit 2. Stay)");
-				
-				playerAction = input.nextInt();
+			System.out.print("Player " + p.getPlayerNumber() + "'s turn (1. Hit 2. Stay)");
+			playerAction = input.nextInt();
 
-				while ((playerAction < 1) || (playerAction > 2)){
-					System.out.print("Invalid action. Please re-enter: ");
-					playerAction = input.nextInt();
-				}
+			while ((playerAction < 1) || (playerAction > 2)){
+				System.out.print("Invalid action. Please re-enter: ");
+				playerAction = input.nextInt();
+			}
 				
 			if (playerAction == 1){
 				p.playerHit();
@@ -95,8 +87,6 @@ public class Gameplay {
 			
 			else {}
 			
-			}
-				
 		}
 			
 	}

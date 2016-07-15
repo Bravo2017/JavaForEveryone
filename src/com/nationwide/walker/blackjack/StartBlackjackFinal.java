@@ -14,15 +14,12 @@ public class StartBlackjackFinal {
 		int playerCount = 0;
 		playerCount = Gameplay.getPlayerCount();
 		
-		
 		dealer.equals(Gameplay.addDealer());
 		players.equals(Gameplay.addPlayers(playerCount));
 		
 		Gameplay.dealHands(deck);
 		Gameplay.printAllHands();
 		Gameplay.startPlayerTurns();
-		
-		
 		
 	}
 		
