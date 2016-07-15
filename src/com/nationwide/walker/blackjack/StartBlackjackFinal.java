@@ -9,13 +9,13 @@ public class StartBlackjackFinal {
 		int playerCount = 0;
 	
 		playerCount = Gameplay.getPlayerCount();
-		deck.equals(Gameplay.addPlayersCreateDeck(playerCount, deck));
 		
+		Gameplay.addPlayers(playerCount, deck);
 		
-		//ADD LOOP
-
+		Gameplay.dealHands(deck);
 		
-
+		Gameplay.startPlayerTurns();
+		
 	}
 		
 	

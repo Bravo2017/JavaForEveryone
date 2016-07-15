@@ -11,7 +11,7 @@ public class Player {
 	
 	public Player(Deck deck){
 		this.deck = deck;
-		dealHand();
+		//dealHand();
 		handValue();
 	}
 
@@ -21,13 +21,6 @@ public class Player {
 	
 	public int getPlayerNumber(){
 		return playerNumber;
-	}
-
-	public void dealHand(){
-		
-		playerHand.add(deck.getTopCard());
-		playerHand.add(deck.getTopCard());
-		
 	}
 	
 	public void handValue(){
@@ -72,6 +65,12 @@ public class Player {
 		System.out.println("");
 		System.out.println("Hand Value: " + this.getValue());
 		System.out.println("");
+	}
+	
+	public void addCard(Card topCard){
+		
+		playerHand.add(topCard);
+		
 	}
 	
 }

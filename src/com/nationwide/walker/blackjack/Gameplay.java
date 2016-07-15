@@ -7,7 +7,8 @@ public class Gameplay {
 	
 	static int winnerIndex;
 	static ArrayList<Player> players = new ArrayList<Player>();
-	
+	static Scanner input = new Scanner(System.in);
+	static int playerCount;
 	
 	public static int highestHand(ArrayList<Player> players){
 	    int highest = 0;
@@ -20,13 +21,6 @@ public class Gameplay {
 		}
 		return highest;
 	}
-
-	
-	
-	public static int getWinner(){
-		return winnerIndex;
-	}
-	
 	
 	static void printAllHands(){
 		
@@ -50,7 +44,7 @@ public class Gameplay {
 		}
 	}
 	
-	static Deck addPlayersCreateDeck(int playerCount, Deck deck){
+	static Deck addPlayers(int playerCount, Deck deck){
 		
 		players.add(new Player(deck)); //Add dealer
 		
@@ -61,10 +55,11 @@ public class Gameplay {
 		for (Player p : players){
 			p.setPlayerNumber(players.indexOf(p));
 		}
+		
 		return deck;
 	}
 	
-	static void startPlayerTurns(Scanner input){
+	static void startPlayerTurns(){
 		
 		int playerAction;
 		
@@ -73,9 +68,14 @@ public class Gameplay {
 			if (p.getPlayerNumber() == 0){
 				;	//Do nothing if player is the Dealer
 			}
+			
 			else{
+				//Scanner input = new Scanner(System.in);
+				
 				System.out.print("Player " + p.getPlayerNumber() + "'s turn (1. Hit 2. Stay)");
+				
 				playerAction = input.nextInt();
+
 				while ((playerAction < 1) || (playerAction > 2)){
 					System.out.print("Invalid action. Please re-enter: ");
 					playerAction = input.nextInt();
@@ -84,34 +84,45 @@ public class Gameplay {
 			if (playerAction == 1){
 				p.playerHit();
 			}
+			
 			else {}
 			
-			
 			}
-			
+				
 		}
 			
 	}
+	
+	
 	static int getPlayerCount() {
 	
-	int playerCount;
-	Scanner input = new Scanner(System.in);
-	
-	System.out.println("Welcome to Blackjack!");
+		System.out.println("Welcome to Blackjack!");
 		System.out.println("");
 		System.out.println("");
 		System.out.print("How many players (1-6)? ");
+		
 		playerCount = input.nextInt();
+		
 		while ((playerCount < 1) || (playerCount > 6)){
 			System.out.print("Invalid player count. Please re-enter (1-6): ");
 			playerCount = input.nextInt();
 		} 
+		
 		System.out.println("");
 		System.out.println("");
 	
-	input.close();
 	
 	return playerCount;
 	
 	}
+	
+	static void dealHands(Deck deck){
+		
+		for (Player p : players){
+			p.addCard(deck.getTopCard());
+			p.addCard(deck.getTopCard());
+		}
+		
+	}
+	
 }
