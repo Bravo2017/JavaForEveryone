@@ -7,7 +7,7 @@ public class Player {
 	Deck deck = new Deck();
 	int value;
 	int playerNumber;
-	static int winnerIndex;
+
 	
 	public Player(Deck deck){
 		this.deck = deck;
@@ -62,17 +62,6 @@ public class Player {
 		handValue();
 	}
 	
-	public static int highestHand(ArrayList<Player> players){
-	    int highest = 0;
-		for (Player p : players){
-			if ((p.getValue() > highest) && (p.getValue() < 21)){
-				highest = p.getValue();
-				winnerIndex = players.indexOf(p);
-			}
-		}
-		
-		return highest;
-	}
 	
 	public void printHand(){
 		for (Card card : playerHand){
@@ -85,9 +74,4 @@ public class Player {
 		System.out.println("");
 	}
 	
-	public static int getWinner(){
-		return winnerIndex;
-	}
-	
-
 }

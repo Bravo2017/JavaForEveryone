@@ -30,10 +30,6 @@ public class Deck {
 	}
 		
 	
-	ArrayList<Card> getCardList (){
-		return cards;
-	}
-	
 	Card getTopCard(){
 		Card topCard = new Card();
 		topCard.setValue(cards.get(0).getValue());
@@ -48,11 +44,16 @@ public class Deck {
 		Collections.shuffle(cards);
 	}
 	
-	void printDeck(){
+	/*void printDeck(){
 		for (Card printCard : cards){
 			System.out.println(printCard.getValue() + " " + printCard.getSuit());
 		}
-	}
+	}*/
 	
-
+	
+	
+	/*	ArrayList<Card> getCardList (){
+	return cards;
+}
+*/
 }
