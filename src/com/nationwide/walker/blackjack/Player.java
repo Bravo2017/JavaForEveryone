@@ -9,11 +9,12 @@ public class Player {
 	int playerNumber;
 
 	
-	public Player(Deck deck){
-		this.deck = deck;
+	/*public Player(Deck deck){
+		//this.deck = deck;
 		//dealHand();
-		handValue();
+		//handValue();
 	}
+	*/
 
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
@@ -68,9 +69,7 @@ public class Player {
 	}
 	
 	public void addCard(Card topCard){
-		
 		playerHand.add(topCard);
-		
 	}
 	
 }

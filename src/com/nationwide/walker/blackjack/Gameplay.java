@@ -5,10 +5,13 @@ import java.util.Scanner;
 
 public class Gameplay {
 	
-	static int winnerIndex;
+	static Dealer dealer = new Dealer();
 	static ArrayList<Player> players = new ArrayList<Player>();
-	static Scanner input = new Scanner(System.in);
+
 	static int playerCount;
+	static int winnerIndex;
+	
+	static Scanner input = new Scanner(System.in);
 	
 	public static int highestHand(ArrayList<Player> players){
 	    int highest = 0;
@@ -44,19 +47,24 @@ public class Gameplay {
 		}
 	}
 	
-	static Deck addPlayers(int playerCount, Deck deck){
+	static ArrayList<Player> addPlayers(int playerCount){
 		
-		players.add(new Player(deck)); //Add dealer
+		players.add(new Player()); //Add dealer
 		
-		for (int i = 1; i <= playerCount; i++){
-			players.add(new Player(deck));
+		for (int i = 1; i < playerCount; i++){
+			players.add(new Player());
 		}
 		
 		for (Player p : players){
-			p.setPlayerNumber(players.indexOf(p));
+			p.setPlayerNumber(players.indexOf(p) + 1);
 		}
 		
-		return deck;
+		return players;
+	}
+	
+	static Dealer addDealer(){
+		dealer = new Dealer();
+		return dealer;
 	}
 	
 	static void startPlayerTurns(){
@@ -93,7 +101,6 @@ public class Gameplay {
 			
 	}
 	
-	
 	static int getPlayerCount() {
 	
 		System.out.println("Welcome to Blackjack!");
@@ -117,6 +124,9 @@ public class Gameplay {
 	}
 	
 	static void dealHands(Deck deck){
+		
+		dealer.dealerHand.add(deck.getTopCard());
+		dealer.dealerHand.add(deck.getTopCard());
 		
 		for (Player p : players){
 			p.addCard(deck.getTopCard());
