@@ -54,9 +54,7 @@ public class Gameplay {
 	
 	static ArrayList<Player> addPlayers(){
 		
-		players.add(new Player()); //Add dealer
-		
-		for (int i = 1; i < playerCount; i++){
+		for (int i = 1; i <= playerCount; i++){
 			players.add(new Player());
 		}
 		
@@ -82,7 +80,7 @@ public class Gameplay {
 			}
 				
 			if (playerAction == 1){
-				p.playerHit();
+				p.addCard(deck.getTopCard());
 			}
 			
 			else {}

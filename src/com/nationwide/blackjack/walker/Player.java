@@ -8,14 +8,6 @@ public class Player {
 	int value;
 	int playerNumber;
 
-	
-	public Player(){
-		//this.deck = deck;
-		//dealHand();
-		//handValue();
-	}
-	
-
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
@@ -50,12 +42,6 @@ public class Player {
 		}
 		return hasAce;
 	}
-	
-	public void playerHit(){
-		playerHand.add(deck.getTopCard());
-		handValue();
-	}
-	
 	
 	public void printHand(){
 		for (Card card : playerHand){
