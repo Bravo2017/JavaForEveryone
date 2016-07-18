@@ -1,4 +1,4 @@
-package com.nationwide.walker.blackjack;
+package com.nationwide.blackjack.walker;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,6 @@ public class Dealer extends Player{
 	public void handValue(){
 		
 		value = 0;
-		System.out.println(playerHand.size());
 		for (Card card : dealerHand){
 			value = value + card.getNumValue();
 		}

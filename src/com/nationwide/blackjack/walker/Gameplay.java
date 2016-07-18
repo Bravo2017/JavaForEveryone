@@ -1,4 +1,4 @@
-package com.nationwide.walker.blackjack;
+package com.nationwide.blackjack.walker;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,22 +7,31 @@ public class Gameplay {
 	
 	static Dealer dealer = new Dealer();
 	static ArrayList<Player> players = new ArrayList<Player>();
+	static Deck deck = new Deck();
 
 	static int playerCount;
 	static int winnerIndex;
 	
 	static Scanner input = new Scanner(System.in);
 	
-	public static int highestHand(ArrayList<Player> players){
+	public static void highestHand(){
 	    int highest = 0;
 
 		for (Player p : players){
-			if ((p.getValue() > highest) && (p.getValue() < 21)){
+			if ((p.getValue() > highest) && (p.getValue() <= 21)){
 				highest = p.getValue();
 				winnerIndex = players.indexOf(p);
 			}
 		}
-		return highest;
+		
+		if (dealer.getValue() > highest){
+			highest = dealer.getValue();
+			System.out.println("The Dealer wins.");
+		}
+		else{
+			System.out.println("Player " + players.get(winnerIndex).getPlayerNumber() + " wins.");
+		}
+		
 	}
 	
 	
@@ -43,7 +52,7 @@ public class Gameplay {
 	}
 	
 	
-	static ArrayList<Player> addPlayers(int playerCount){
+	static ArrayList<Player> addPlayers(){
 		
 		players.add(new Player()); //Add dealer
 		
@@ -57,15 +66,6 @@ public class Gameplay {
 		
 		return players;
 	}
-	
-	
-	static Dealer addDealer(){
-		
-		dealer = new Dealer();
-		return dealer;
-		
-	}
-	
 	
 	static void startPlayerTurns(){
 		
@@ -91,7 +91,7 @@ public class Gameplay {
 			
 	}
 	
-	static int getPlayerCount() {
+	static void inputPlayerCount() {
 	
 		System.out.println("Welcome to Blackjack!");
 		System.out.println("");
@@ -108,15 +108,12 @@ public class Gameplay {
 		System.out.println("");
 		System.out.println("");
 	
-	
-	return playerCount;
-	
 	}
 	
-	static void dealHands(Deck deck){
+	static void dealHands(){
 		
-		dealer.dealerHand.add(deck.getTopCard());
-		dealer.dealerHand.add(deck.getTopCard());
+		dealer.addCard(deck.getTopCard());
+		dealer.addCard(deck.getTopCard());
 		
 		for (Player p : players){
 			p.addCard(deck.getTopCard());

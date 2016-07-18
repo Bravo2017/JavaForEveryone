@@ -1,4 +1,4 @@
-package com.nationwide.walker.blackjack;
+package com.nationwide.blackjack.walker;
 import java.util.ArrayList;
 
 public class Player {
@@ -12,7 +12,7 @@ public class Player {
 	public Player(){
 		//this.deck = deck;
 		//dealHand();
-		handValue();
+		//handValue();
 	}
 	
 

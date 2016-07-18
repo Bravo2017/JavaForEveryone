@@ -1,4 +1,4 @@
-package com.nationwide.walker.blackjack;
+package com.nationwide.blackjack.walker;
 public class Card {
 	
 	String value;
