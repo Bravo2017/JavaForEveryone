@@ -14,29 +14,6 @@ public class Gameplay {
 	
 	static Scanner input = new Scanner(System.in);
 	
-	/*
-	public static void findHighestHand(){
-		
-	    int highestHandValue = 0;
-
-		for (Player p : players){
-			if ((p.getHandValue() > highestHandValue) && (p.getHandValue() <= 21)){
-				highestHandValue = p.getHandValue();
-				winnerPlayerNumber = p.getPlayerNumber();
-			}
-		}
-		
-		if (dealer.getHandValue() > highestHandValue){
-			highestHandValue = dealer.getHandValue();
-			System.out.println("The Dealer wins.");
-		}
-		else{
-			System.out.println("Player " + winnerPlayerNumber + " wins.");
-		}
-		
-	}
-	*/
-	
 	static void printAllHands(){
 
 		dealer.printHand();
@@ -147,3 +124,27 @@ public class Gameplay {
 	}
 	
 }
+
+/*
+public static void findHighestHand(){
+	
+    int highestHandValue = 0;
+
+	for (Player p : players){
+		if ((p.getHandValue() > highestHandValue) && (p.getHandValue() <= 21)){
+			highestHandValue = p.getHandValue();
+			winnerPlayerNumber = p.getPlayerNumber();
+		}
+	}
+	
+	if (dealer.getHandValue() > highestHandValue){
+		highestHandValue = dealer.getHandValue();
+		System.out.println("The Dealer wins.");
+	}
+	else{
+		System.out.println("Player " + winnerPlayerNumber + " wins.");
+	}
+	
+}
+*/
+

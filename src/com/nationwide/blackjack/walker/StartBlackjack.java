@@ -7,7 +7,6 @@ public class StartBlackjack {
 		
 		System.out.println("Welcome to Blackjack!");
 		System.out.println("");
-		System.out.println("");
 		
 		Gameplay.inputPlayerCount();
 		Gameplay.addPlayers();

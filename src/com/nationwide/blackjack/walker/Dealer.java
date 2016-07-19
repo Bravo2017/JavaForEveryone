@@ -20,7 +20,7 @@ public class Dealer extends Player{
 				format = card.getValue() + " of " + card.getSuit();
 			}
 			else{
-				format = "*Face Down*";
+				format = "   *Face Down*";
 			}
 			while (format.length() < 18){
 					format = format + " ";
