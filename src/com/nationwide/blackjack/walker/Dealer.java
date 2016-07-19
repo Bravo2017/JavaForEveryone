@@ -3,17 +3,31 @@ package com.nationwide.blackjack.walker;
 
 public class Dealer extends Player{
 	
+	public Dealer(){
+		playerNumber = 0;
+	}
+	
 	public void printHand(){
-
-		System.out.print("Dealer:      ");
+		
+		// format this line?
+		System.out.print("*Dealer*:     ");
 		
 		for (Card card : playerHand){
-			System.out.print(card.getValue() + " of " + card.getSuit());
-			System.out.print("(" + card.getNumValue() + ")");
-			System.out.print("     ");
+			
+			String format = "";
+			
+			if ( !card.isFaceDown()){
+				format = card.getValue() + " of " + card.getSuit();
+			}
+			else{
+				format = "*Face Down*";
+			}
+			while (format.length() < 18){
+					format = format + " ";
+			}
+			System.out.print(format);
 		}
-		System.out.println("");
-		System.out.println("Hand Value: " + this.getValue());
+		
 		System.out.println("");
 		
 	}

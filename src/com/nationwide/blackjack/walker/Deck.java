@@ -2,13 +2,6 @@ package com.nationwide.blackjack.walker;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/*
- * Requirements:
- * 2 players (One dealer)
- * Create two card hand for each player
- * 52 card deck
- * Evaluate winner
- */
 
 public class Deck {
 	
@@ -31,29 +24,40 @@ public class Deck {
 		
 	
 	Card getTopCard(){
+		
 		Card topCard = new Card();
 		topCard.setValue(cards.get(0).getValue());
 		topCard.setSuit(cards.get(0).getSuit());
+		topCard.setNumValue(cards.get(0).getNumValue());
+		
 		cards.remove(0);
 		cards.trimToSize();
+		
 		return topCard;
 	}
 	
-	void shuffleDeck(){
+	Card getTopCard(boolean isFaceDown){
+
+		Card topCard = new Card();
+		topCard.setValue(cards.get(0).getValue());
+		topCard.setSuit(cards.get(0).getSuit());
+		topCard.setNumValue(cards.get(0).getNumValue());
+		topCard.setFaceDown(isFaceDown);
+		
+		cards.remove(0);
+		cards.trimToSize();
+		
+		return topCard;
+		
+	}
+	
+	/* Fix original date assignment
+	  void shuffleDeck(){
+	 
 		cards.equals(cardsOriginalState);
 		Collections.shuffle(cards);
 	}
+	*/
 	
-	/*void printDeck(){
-		for (Card printCard : cards){
-			System.out.println(printCard.getValue() + " " + printCard.getSuit());
-		}
-	}*/
-	
-	
-	
-	/*	ArrayList<Card> getCardList (){
-	return cards;
-}
-*/
+
 }

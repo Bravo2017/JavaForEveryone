@@ -5,64 +5,62 @@ import java.util.Scanner;
 
 public class Gameplay {
 	
+	static Deck deck = new Deck();
 	static Dealer dealer = new Dealer();
 	static ArrayList<Player> players = new ArrayList<Player>();
-	static Deck deck = new Deck();
 
 	static int playerCount;
-	static int winnerIndex;
+	static int winnerPlayerNumber;
 	
 	static Scanner input = new Scanner(System.in);
 	
-	public static void highestHand(){
-	    int highest = 0;
+	/*
+	public static void findHighestHand(){
+		
+	    int highestHandValue = 0;
 
 		for (Player p : players){
-			if ((p.getValue() > highest) && (p.getValue() <= 21)){
-				highest = p.getValue();
-				winnerIndex = players.indexOf(p);
+			if ((p.getHandValue() > highestHandValue) && (p.getHandValue() <= 21)){
+				highestHandValue = p.getHandValue();
+				winnerPlayerNumber = p.getPlayerNumber();
 			}
 		}
 		
-		if (dealer.getValue() > highest){
-			highest = dealer.getValue();
+		if (dealer.getHandValue() > highestHandValue){
+			highestHandValue = dealer.getHandValue();
 			System.out.println("The Dealer wins.");
 		}
 		else{
-			System.out.println("Player " + players.get(winnerIndex).getPlayerNumber() + " wins.");
+			System.out.println("Player " + winnerPlayerNumber + " wins.");
 		}
 		
 	}
-	
+	*/
 	
 	static void printAllHands(){
 
 		dealer.printHand();
 		
 		for (Player p : players){
-			System.out.print("Player  " + p.getPlayerNumber() + ":   ");
-			
+
 			p.printHand();
 			
-			if (p.getValue() > 21){
+			if (p.getHandValue() == -1 ){
 				System.out.println("Player " + p.getPlayerNumber() + " has gone bust.");
 				players.remove(p);
 			}
 		}
+		System.out.println("");
+		
 	}
 	
 	
-	static ArrayList<Player> addPlayers(){
+	static void addPlayers(){
 		
 		for (int i = 1; i <= playerCount; i++){
-			players.add(new Player());
+			players.add(new Player(i));
 		}
 		
-		for (Player p : players){
-			p.setPlayerNumber(players.indexOf(p) + 1);
-		}
-		
-		return players;
 	}
 	
 	static void startPlayerTurns(){
@@ -91,9 +89,6 @@ public class Gameplay {
 	
 	static void inputPlayerCount() {
 	
-		System.out.println("Welcome to Blackjack!");
-		System.out.println("");
-		System.out.println("");
 		System.out.print("How many players (1-6)? ");
 		
 		playerCount = input.nextInt();
@@ -104,20 +99,51 @@ public class Gameplay {
 		} 
 		
 		System.out.println("");
-		System.out.println("");
 	
 	}
 	
 	static void dealHands(){
 		
-		dealer.addCard(deck.getTopCard());
+		boolean isFaceDown = true;
+		
+		for (Player p : players){
+			p.addCard(deck.getTopCard());
+		}
+		
 		dealer.addCard(deck.getTopCard());
 		
 		for (Player p : players){
 			p.addCard(deck.getTopCard());
-			p.addCard(deck.getTopCard());
 		}
 		
+		dealer.addCard(deck.getTopCard(isFaceDown));
+		
+	}
+	
+	static void checkForBlackjack(){
+		
+		for (Player p : players){
+			if (p.getHandValue() == 21){
+				double winnings = p.getBet() * 1.5;
+				p.addWinnings(winnings);
+				System.out.println("Player " + p.getPlayerNumber() + " has a blackjack and has won " + winnings + ".");
+			}
+		}
+		
+	}
+	
+	static void placeBets(){
+		
+		for (Player p : players){
+			System.out.print("Player " + p.getPlayerNumber() + " enter bet: ");
+			p.setBet(input.nextDouble());
+			
+			while ((p.getBet() < 1) || (p.getBet() > p.getChipValue())){
+				System.out.print("Invalid bet. Please re-enter: ");
+				p.setBet(input.nextDouble());
+			}
+			
+		}
 	}
 	
 }
