@@ -1,4 +1,4 @@
-package com.nationwide;
+package com.nationwide.chapter14.davis;
 
 // P14.3 Write a program that automatically 
 // generates the table of sample run times for 

@@ -1,3 +1,5 @@
+package com.nationwide.chapter14.davis;
+
 
 public class P14Q2ArrayUtil {
 	static public final double DIME = .10;

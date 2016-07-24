@@ -1,4 +1,4 @@
-package com.nationwide;
+package com.nationwide.chapter14.davis;
 
 public class P14Q3StopWatch {
 
