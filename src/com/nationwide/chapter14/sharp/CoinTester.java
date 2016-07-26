@@ -1,0 +1,24 @@
+package com.nationwide.chapter14.sharp;
+
+import java.util.Arrays;
+
+public class CoinTester {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Coin[] a = { new Coin(0.05, "Nickel"), new Coin(0.25, "Quarter"),
+				new Coin(0.05, "Nickel"), new Coin(0.01, "Penny"),
+				new Coin(0.1, "Dime") };
+		SelectionSorter s = new SelectionSorter(a);
+		s.sort();
+		System.out.println(Arrays.toString(a));
+		System.out
+				.println("Expected: [Coin[value=0.01,name=Penny], Coin[value=0.05,name=Nickel], Coin[value=0.05,name=Nickel], Coin[value=0.1,name=Dime], Coin[value=0.25,name=Quarter]]");
+
+	}
+
+}
