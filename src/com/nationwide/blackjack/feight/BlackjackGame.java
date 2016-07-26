@@ -2,7 +2,6 @@ package com.nationwide.blackjack.feight;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 
@@ -29,12 +28,19 @@ public class BlackjackGame {
 		dealCards(2);
 		System.out.println();
 		
+		showTopCards();
+		System.out.println();
+		
+		processStayHit();
+		System.out.println();
+		
 		showHands();
 		System.out.println();
 		
 		System.out.println("Did you win???");
-		System.out.println(evaluateHands());
-		if(evaluateHands()) {
+		boolean win = evaluateHands();
+		System.out.println(win);
+		if(win) {
 			System.out.println("Good play!");
 		} else {
 			System.out.println("Darn...better luck next time.");
@@ -62,15 +68,66 @@ public class BlackjackGame {
 			
 			System.out.println("Dealing card #" + i);
 			
-			int index = getRandomCard();
-			player1.getHand().addCard(gameDeck.get(index).getSuit(), gameDeck.get(index).getFace());
-			gameDeck.remove(index);
+			player1.getHand().addCard(gameDeck.get(0));
+			gameDeck.remove(0);
 			
-			index = getRandomCard();
-			dealer.getHand().addCard(gameDeck.get(index).getSuit(), gameDeck.get(index).getFace());
-			gameDeck.remove(index);
+			dealer.getHand().addCard(gameDeck.get(0));
+			gameDeck.remove(0);
 		}
 		
+	}
+	
+	private static void showTopCards() {
+
+		System.out.println(player1.getPlayerName() + "'s hand.");
+		player1.getHand().showTopCards();
+		
+		System.out.println();
+		System.out.println("Dealer's hand.");
+		dealer.getHand().showTopCards();
+
+	}
+	
+	private static void processStayHit() {
+		System.out.println("Enter 'H' for Hit or 'S' for Stay");
+		System.out.println("____________________________________________");
+		String stayHit = null;
+		
+		do {
+			
+			System.out.println(player1.getPlayerName() + ", do you want to Hit or Stay?");
+			stayHit = in.next();
+
+			if ("H".equalsIgnoreCase(stayHit)) {
+				processHit();
+				processDealerStayHit();
+			} else if ("S".equalsIgnoreCase(stayHit)) {
+				processDealerStayHit();
+			} else {
+				System.out.println("Invalid entry. Please enter 'H' or 'S'.");
+			}
+			
+			showTopCards();
+			System.out.println("____________________________________________");
+			
+		} while ((!"H".equalsIgnoreCase(stayHit) && !"S".equalsIgnoreCase(stayHit))
+				|| "H".equalsIgnoreCase(stayHit));
+		
+	}
+	
+	private static void processDealerStayHit() {
+		if (dealer.getHand().getTotal() < 17) {
+			System.out.println("Dealer hits.\n");
+			dealer.getHand().addCard(gameDeck.get(0));
+			gameDeck.remove(0);
+		} else {
+			System.out.println("Dealer stays.\n");
+		}
+	}
+	
+	private static void processHit() {
+		player1.getHand().addCard(gameDeck.get(0));
+		gameDeck.remove(0);
 	}
 	
 	private static void showHands() {
@@ -86,27 +143,18 @@ public class BlackjackGame {
 	
 	private static boolean evaluateHands() {
 		
-		boolean result = false;
 		int player1Total = player1.getHand().getTotal();
 		int dealerTotal = dealer.getHand().getTotal();
 		
 		if (dealerTotal <= BLACKJACK && (dealerTotal == BLACKJACK || player1Total == dealerTotal || player1Total < dealerTotal)) {
-			result = false;
-		} else if (player1Total == BLACKJACK || dealerTotal > BLACKJACK) {
-			result = true;
+			return false;
+		} else if (player1Total <= BLACKJACK && (player1Total == BLACKJACK || dealerTotal > BLACKJACK)) {
+			return true;
 		} else if ((dealerTotal < BLACKJACK && player1Total < BLACKJACK) && player1Total > dealerTotal) {
-			result = true;
+			return true;
 		}
+		return false;
 		
-		return result;
-	}
-	
-	private static int getRandomCard() {
-		
-		int index = 0;
-		index = ThreadLocalRandom.current().nextInt(0, gameDeck.size());
-		
-		return index;
 	}
 	
 }

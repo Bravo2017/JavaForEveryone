@@ -15,9 +15,9 @@ public class BlackjackHand {
 		blackjackHand = new ArrayList<Card>();
 	}
 	
-	public void addCard(CardSuit suit, CardFace face) {
+	public void addCard(Card card) {
 		
-		blackjackHand.add(new Card(suit, face));
+		blackjackHand.add(card);
 		
 	}
 	
@@ -28,14 +28,37 @@ public class BlackjackHand {
 	}
 	
 	public int getTotal() {
-		
+
 		int total = 0;
+		boolean hasAce = false;
+
+		for (Card card : blackjackHand) {
+			if (card.getFace().equals(CardFace.ACE)) {
+				hasAce = true;
+			} else {
+				total = total + card.getCardValue();
+			}
+		}
+
+		if (hasAce) {
+			return determineTotalWithAce(total, blackjackHand);
+		} else {
+			return total;
+		}
+	}
+	
+	private int determineTotalWithAce(int total, ArrayList<Card> blackjackHand) {
 		
 		for (Card card : blackjackHand) {
-			total = total + card.getCardValue();
+			if (card.getFace().equals(CardFace.ACE) && total > 10) {
+				total = total + 1;
+			} else {
+				total = total + 11;
+			}
 		}
 		
 		return total;
+		
 	}
 	
 	public int getCardCount() {
@@ -48,6 +71,17 @@ public class BlackjackHand {
 		
 		for (Card card : blackjackHand) {
 			System.out.println(card.toString());
+		}
+	}
+	
+	public void showTopCards() {
+
+		for (Card card : blackjackHand) {
+			if (blackjackHand.indexOf(card) == 0) {
+				System.out.println("Card is face down");
+			} else {
+				System.out.println(card.toString());
+			}
 		}
 	}
 	
