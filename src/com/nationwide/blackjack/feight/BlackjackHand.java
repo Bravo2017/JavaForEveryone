@@ -48,17 +48,20 @@ public class BlackjackHand {
 	}
 	
 	private int determineTotalWithAce(int total, ArrayList<Card> blackjackHand) {
-		
+
 		for (Card card : blackjackHand) {
-			if (card.getFace().equals(CardFace.ACE) && total > 10) {
-				total = total + 1;
-			} else {
-				total = total + 11;
+			if (card.getFace().equals(CardFace.ACE)) {
+				if (total > 10) {
+					total = total + 1;
+					card.setCardDescription("... played as 1");
+				} else {
+					total = total + 11;
+					card.setCardDescription("... played as 11");
+				}
 			}
 		}
-		
+
 		return total;
-		
 	}
 	
 	public int getCardCount() {

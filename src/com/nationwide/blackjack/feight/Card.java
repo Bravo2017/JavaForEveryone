@@ -8,11 +8,13 @@ public class Card {
 	
 	private final CardFace face;
 	private final CardSuit suit;
+	private String cardDescription;
 	
 	public Card(CardSuit cardSuit, CardFace cardFace) {
 		
 		this.suit = cardSuit;
 		this.face = cardFace;
+		this.cardDescription = "";
 	}
 	
 	public CardFace getFace() {
@@ -35,11 +37,20 @@ public class Card {
 		return suit.getValue();
 	}
 	
+	public String getCardDescription() {
+		
+		return cardDescription;
+	}
+	
+	public void setCardDescription(String newCardDescription) {
+		this.cardDescription = newCardDescription;
+	}
+	
 	@Override
 	public String toString() {
 		
 		String cardString = null;
-		cardString = getSuitValue() + " " + getFace() + "(" + getCardValue() + ")";
+		cardString = getSuitValue() + " " + getFace() + "(" + getCardValue() +  ") " + getCardDescription();
 		return cardString;
 	}
 	

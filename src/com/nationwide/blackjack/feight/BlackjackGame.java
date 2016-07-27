@@ -14,7 +14,7 @@ public class BlackjackGame {
 	private final static int BLACKJACK = 21;
 	private final static Scanner in = new Scanner(System.in);
 	private final static Player dealer = new Player("Dealer");
-	private final static Player player1 = new Player("");
+	private final static ArrayList<Player> playerList = new ArrayList<Player>();
 	private static Deck deck = new Deck();
 	private final static ArrayList<Card> gameDeck = deck.getNewDeck();
 
@@ -34,20 +34,25 @@ public class BlackjackGame {
 		processStayHit();
 		System.out.println();
 		
-		showHands();
-		System.out.println();
 		
-		System.out.println("Did you win???");
-		boolean win = evaluateHands();
-		System.out.println(win);
-		if(win) {
-			System.out.println("Good play!");
-		} else {
-			System.out.println("Darn...better luck next time.");
+		for (Player player : playerList) {
+			showHands(player);
+			
+			System.out.println();
+			System.out.println("Did you win???");
+
+			boolean win = evaluateHands();
+			System.out.println(win);
+			if (win) {
+				System.out.println("Good play!");
+			} else {
+				System.out.println("Darn...better luck next time.");
+			}
+			
+			System.out.println("____________________________________________");
 		}
 		
 		in.close();
-
 	}
 	
 	private static void startGame() {
@@ -55,11 +60,14 @@ public class BlackjackGame {
 		System.out.println("Hello. Welcome to the Blackjack table.");
 		System.out.println("Please tell me your name.");
 		String userName = in.next();
-				
-		player1.setPlayerName(userName);
-		System.out.println("Nice to meet you " + player1.getPlayerName() + ". I am the Dealer");
-		System.out.println("Now let's play!\n");
 		
+		playerList.add(new Player(userName));
+		
+		for (Player player : playerList) {
+			System.out.println("Hello " + player.getPlayerName() + ".");
+		}
+		
+		System.out.println("I am the Dealer. Now let's play!\n");
 	}
 	
 	private static void dealCards(int number) {
@@ -68,72 +76,86 @@ public class BlackjackGame {
 			
 			System.out.println("Dealing card #" + i);
 			
-			player1.getHand().addCard(gameDeck.get(0));
-			gameDeck.remove(0);
+			for (Player player : playerList) {
+				player.getHand().addCard(gameDeck.get(0));
+				gameDeck.remove(0);
+			}
 			
 			dealer.getHand().addCard(gameDeck.get(0));
 			gameDeck.remove(0);
 		}
-		
 	}
 	
 	private static void showTopCards() {
-
-		System.out.println(player1.getPlayerName() + "'s hand.");
-		player1.getHand().showTopCards();
 		
-		System.out.println();
+		for (Player player : playerList) {
+			System.out.println(player.getPlayerName() + "'s hand.");
+			player.getHand().showTopCards();
+			System.out.println();
+		}
+
 		System.out.println("Dealer's hand.");
 		dealer.getHand().showTopCards();
-
 	}
 	
 	private static void processStayHit() {
-		System.out.println("Enter 'H' for Hit or 'S' for Stay");
-		System.out.println("____________________________________________");
-		String stayHit = null;
 		
-		do {
-			
-			System.out.println(player1.getPlayerName() + ", do you want to Hit or Stay?");
-			stayHit = in.next();
+		System.out.println("____________________________________________\n");
 
-			if ("H".equalsIgnoreCase(stayHit)) {
-				processHit();
-				processDealerStayHit();
-			} else if ("S".equalsIgnoreCase(stayHit)) {
-				processDealerStayHit();
-			} else {
-				System.out.println("Invalid entry. Please enter 'H' or 'S'.");
-			}
-			
-			showTopCards();
-			System.out.println("____________________________________________");
-			
-		} while ((!"H".equalsIgnoreCase(stayHit) && !"S".equalsIgnoreCase(stayHit))
-				|| "H".equalsIgnoreCase(stayHit));
+		for (Player player : playerList) {
+			String stayHit = null;
+			System.out.println(player.getPlayerName() + ", it is your turn. Here is your Hand.");
+			System.out.println("Enter 'H' for Hit or 'S' for Stay");
+
+			do {
+				player.getHand().showHand();
+				System.out.println("Do you want to Hit or Stay?");
+				stayHit = in.next();
+
+				if ("H".equalsIgnoreCase(stayHit)) {
+					processHit(player);
+				} else if ("S".equalsIgnoreCase(stayHit)) {
+					System.out.println("____________________________________________");
+					break;
+				} else {
+					System.out.println("Invalid entry. Please enter 'H' or 'S'.");
+				}
+
+				System.out.println("____________________________________________");
+
+			} while ((!"H".equalsIgnoreCase(stayHit) && !"S".equalsIgnoreCase(stayHit))
+					|| "H".equalsIgnoreCase(stayHit));
+		}
 		
+		processDealerStayHit();
 	}
 	
 	private static void processDealerStayHit() {
-		if (dealer.getHand().getTotal() < 17) {
-			System.out.println("Dealer hits.\n");
-			dealer.getHand().addCard(gameDeck.get(0));
-			gameDeck.remove(0);
-		} else {
-			System.out.println("Dealer stays.\n");
-		}
+		
+		System.out.println("Dealer's turn.");
+
+		do {
+			dealer.getHand().showHand();
+			if (dealer.getHand().getTotal() < 17) {
+				System.out.println("Dealer hits.\n");
+				processHit(dealer);
+			} else {
+				System.out.println("Dealer stays.\n");
+			}
+		} while (dealer.getHand().getTotal() < 17);
+		
+		System.out.println("____________________________________________");
 	}
 	
-	private static void processHit() {
-		player1.getHand().addCard(gameDeck.get(0));
+	private static void processHit(Player player) {
+		player.getHand().addCard(gameDeck.get(0));
 		gameDeck.remove(0);
 	}
 	
-	private static void showHands() {
+	private static void showHands(Player player) {
 		
-		System.out.println("Here is your hand " + player1.getPlayerName() + ".");
-		player1.getHand().showHand();
+		System.out.println("Here is your hand " + player.getPlayerName() + ".");
+		player.getHand().showHand();
 		
 		System.out.println();
 		System.out.println("This is the dealer's hand.");
@@ -143,7 +165,7 @@ public class BlackjackGame {
 	
 	private static boolean evaluateHands() {
 		
-		int player1Total = player1.getHand().getTotal();
+		int player1Total = playerList.get(0).getHand().getTotal();
 		int dealerTotal = dealer.getHand().getTotal();
 		
 		if (dealerTotal <= BLACKJACK && (dealerTotal == BLACKJACK || player1Total == dealerTotal || player1Total < dealerTotal)) {
