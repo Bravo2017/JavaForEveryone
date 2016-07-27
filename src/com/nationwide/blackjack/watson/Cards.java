@@ -1,4 +1,4 @@
-package com.nationwide.blackjack.watson;
+package com.blackjack.classproject.Bravo;
 
 public class Cards {
 

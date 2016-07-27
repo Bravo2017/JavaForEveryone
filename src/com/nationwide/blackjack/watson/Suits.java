@@ -1,6 +1,12 @@
-package com.nationwide.blackjack.watson;
+package com.blackjack.classproject.Bravo;
 
-public enum Suits {
 
-	Clubs, Diamonds, Hearts, Spades,
+//  Four standard suits
+
+  public enum Suits {
+	
+	Clubs,
+	Diamonds,
+	Hearts,
+	Spades,	
 }
