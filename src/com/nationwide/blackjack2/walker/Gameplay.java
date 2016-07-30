@@ -1,4 +1,4 @@
-package com.nationwide.blackjack.walker;
+package com.nationwide.blackjack2.walker;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -58,7 +58,8 @@ public class Gameplay {
 			p.takeTurn(deck);
 
 			if (p.getHandValue() > 21) {
-				System.out.println("Player " + p.getPlayerNumber() + "has gone bust.");
+				System.out.println("Player " + p.getPlayerNumber()
+						+ "has gone bust.");
 				p.lostHand();
 			}
 
@@ -76,7 +77,8 @@ public class Gameplay {
 				double winnings = p.getBet() * 1.5;
 				p.addWinnings(winnings);
 				p.setOutOfRound(true);
-				System.out.println("Player " + p.getPlayerNumber() + " has a blackjack and has won " + winnings + ".");
+				System.out.println("Player " + p.getPlayerNumber()
+						+ " has a blackjack and has won " + winnings + ".");
 
 			}
 
@@ -92,14 +94,17 @@ public class Gameplay {
 
 			} else if (p.getHandValue() > dealer.getHandValue()) {
 				p.addWinnings(p.getBet());
-				System.out.println("Player " + p.getPlayerNumber() + " has won " + p.getBet() + ". Total chip value: "
+				System.out.println("Player " + p.getPlayerNumber()
+						+ " has won " + p.getBet() + ". Total chip value: "
 						+ p.getChipValue());
 			} else if (p.getHandValue() < dealer.getHandValue()) {
 				p.lostHand();
-				System.out.println("Player " + p.getPlayerNumber() + " has lost " + p.getBet() + ". Total chip value: "
+				System.out.println("Player " + p.getPlayerNumber()
+						+ " has lost " + p.getBet() + ". Total chip value: "
 						+ p.getChipValue());
 			} else if (p.getHandValue() == dealer.getHandValue()) {
-				System.out.println("Player " + p.getPlayerNumber() + " has tied the dealer. Total chip value: "
+				System.out.println("Player " + p.getPlayerNumber()
+						+ " has tied the dealer. Total chip value: "
 						+ p.getChipValue());
 			}
 
@@ -116,7 +121,8 @@ public class Gameplay {
 			p.printHand();
 
 			if (p.getHandValue() == -1) {
-				System.out.println("Player " + p.getPlayerNumber() + " has gone bust.");
+				System.out.println("Player " + p.getPlayerNumber()
+						+ " has gone bust.");
 				System.out.println("");
 			}
 		}

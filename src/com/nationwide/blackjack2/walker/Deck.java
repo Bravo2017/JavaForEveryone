@@ -1,4 +1,4 @@
-package com.nationwide.blackjack.walker;
+package com.nationwide.blackjack2.walker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,8 @@ import java.util.Collections;
 public class Deck {
 
 	ArrayList<Card> cards = new ArrayList<Card>();
-	String[] value = { "Ace", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+	String[] value = { "Ace", "3", "4", "5", "6", "7", "8", "9", "10", "Jack",
+			"Queen", "King" };
 
 	public Deck() {
 

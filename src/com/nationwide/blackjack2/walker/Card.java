@@ -1,6 +1,7 @@
-package com.nationwide.blackjack.walker;
+package com.nationwide.blackjack2.walker;
+
 public class Card {
-	
+
 	String value;
 	String suit;
 	String name;
@@ -8,34 +9,31 @@ public class Card {
 	boolean ace = false;
 	boolean faceDown = false;
 
-	public Card(){
-		
+	public Card() {
+
 	}
 
-	public Card (String value, String suit){
-		
+	public Card(String value, String suit) {
+
 		this.suit = suit;
 		this.value = value;
-		
-		if (isNumeric()){
+
+		if (isNumeric()) {
 			numValue = Integer.parseInt(value);
-		}
-		else if (value == "Ace") {
+		} else if (value == "Ace") {
 			numValue = 11;
 			ace = true;
-		}
-		else {
+		} else {
 			numValue = 10;
 		}
 
 	}
-	
-	private boolean isNumeric(){
-		try{
+
+	private boolean isNumeric() {
+		try {
 			int testValue = Integer.parseInt(value);
 			return true;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			return false;
 		}
 	}
@@ -51,26 +49,31 @@ public class Card {
 	public String getValue() {
 		return value;
 	}
+
 	public void setValue(String value) {
 		this.value = value;
 	}
+
 	public String getSuit() {
 		return suit;
 	}
+
 	public void setSuit(String suit) {
 		this.suit = suit;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public boolean isAce(){
+
+	public boolean isAce() {
 		return ace;
 	}
-	
+
 	public boolean isFaceDown() {
 		return faceDown;
 	}
@@ -78,5 +81,5 @@ public class Card {
 	public void setFaceDown(boolean faceDown) {
 		this.faceDown = faceDown;
 	}
-	
+
 }

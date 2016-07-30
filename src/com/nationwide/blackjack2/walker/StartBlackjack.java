@@ -1,4 +1,4 @@
-package com.nationwide.blackjack.walker;
+package com.nationwide.blackjack2.walker;
 
 import java.util.Scanner;
 
@@ -11,8 +11,8 @@ public class StartBlackjack {
 		String dealNewHand = "";
 
 		System.out.println("Welcome to Blackjack!");
-		System.out.println(
-				"----------------------------------------------------------------------------------------------------------------------------");
+		System.out
+				.println("----------------------------------------------------------------------------------------------------------------------------");
 		System.out.println("");
 
 		Gameplay.inputPlayerCount();
@@ -20,8 +20,8 @@ public class StartBlackjack {
 
 		while (dealNewHand != "n") {
 
-			System.out.println(
-					"----------------------------------------------------------------------------------------------------------------------------");
+			System.out
+					.println("----------------------------------------------------------------------------------------------------------------------------");
 			System.out.println("");
 
 			Gameplay.placeBets();

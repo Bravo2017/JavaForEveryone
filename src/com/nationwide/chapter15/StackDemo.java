@@ -22,5 +22,10 @@ public class StackDemo {
 			String command = commands.pop();
 			System.out.println("Undo " + command);
 		}
+
+		for (int i = 1; i <= 4; i++) {
+			// String command = commands.pop();
+			System.out.println("Undo " + command);
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.nationwide.blackjack.walker;
+package com.nationwide.blackjack2.walker;
 
 public class Dealer extends Player {
 

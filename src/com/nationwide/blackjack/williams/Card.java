@@ -1,21 +1,41 @@
 package com.nationwide.blackjack.williams;
 
 public class Card {
-	private Integer card = 0;
+	private String suit;
+	private String faceValue;
 
-	/**
-	 * @return the card
-	 */
-	public Integer getCard() {
-		return card;
+	public Card() {
+		suit = "";
+		faceValue = "";
 	}
 
 	/**
-	 * @param card
-	 *            the card to set
+	 * @return the suit
 	 */
-	public void setCard(Integer card) {
-		this.card = card;
+	public String getSuit() {
+		return suit;
 	}
 
+	/**
+	 * @param suit
+	 *            the suit to set
+	 */
+	public void setSuit(String suit) {
+		this.suit = suit;
+	}
+
+	/**
+	 * @return the faceValue
+	 */
+	public String getFaceValue() {
+		return faceValue;
+	}
+
+	/**
+	 * @param faceValue
+	 *            the faceValue to set
+	 */
+	public void setFaceValue(String faceValue) {
+		this.faceValue = faceValue;
+	}
 }
