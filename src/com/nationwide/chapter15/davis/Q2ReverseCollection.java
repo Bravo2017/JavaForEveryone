@@ -41,7 +41,6 @@ public class Q2ReverseCollection {
 
 		for (String straeh : strings) {
 			ListIterator<String> iterator = strings.listIterator();
-			// String s = iterator.next();
 			sgnirts.addFirst(straeh);
 		}
 		for (String straeh : sgnirts) {
